@@ -1,15 +1,15 @@
-import json
 import os
+import json
 from pathlib import Path
 
+config = {}
 CONFIG_PATH = Path(__file__).parent / "config.json"
 
-with open(CONFIG_PATH) as f:
-    config = json.load(f)
+if CONFIG_PATH.exists():
+    with open(CONFIG_PATH) as f:
+        config = json.load(f)
 
-# Use env vars to override if provided
-SPEECH_KEY = os.getenv("SPEECH_KEY")
-SPEECH_REGION = os.getenv("SPEECH_REGION")
-VOICE = os.getenv("VOICE", "en-US-AvaNeural")
-OUTPUT_DIR = os.getenv("OUTPUT_DIR", "audio")
-
+SPEECH_KEY = os.getenv("SPEECH_KEY") or config.get("speech_key")
+SPEECH_REGION = os.getenv("SPEECH_REGION") or config.get("speech_region")
+VOICE = os.getenv("VOICE") or config.get("voice", "en-US-AvaNeural")
+OUTPUT_DIR = os.getenv("OUTPUT_DIR") or config.get("output_dir", "audio")
