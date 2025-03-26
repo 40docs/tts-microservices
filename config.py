@@ -12,4 +12,4 @@ if CONFIG_PATH.exists():
 SPEECH_KEY = os.getenv("SPEECH_KEY") or config.get("speech_key")
 SPEECH_REGION = os.getenv("SPEECH_REGION") or config.get("speech_region")
 VOICE = os.getenv("VOICE") or config.get("voice", "en-US-AvaNeural")
-OUTPUT_DIR = os.getenv("OUTPUT_DIR") or config.get("output_dir", "audio")
+OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR") or config.get("output_dir", "audio"))
