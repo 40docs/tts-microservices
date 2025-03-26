@@ -1,2 +1,0 @@
-flask
-azure-cognitiveservices-speech
