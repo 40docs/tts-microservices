@@ -1,7 +1,0 @@
-{
-    "speech_key": "YOUR_SPEECH_KEY",
-    "speech_region": "canadacentral",
-    "voice": "en-US-AvaNeural",
-    "output_dir": "audio"
-  }
-  
