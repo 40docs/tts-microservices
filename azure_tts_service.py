@@ -9,9 +9,8 @@ def synthesize(text: str, filename: str = "output") -> str:
     speech_config = speechsdk.SpeechConfig(subscription=SPEECH_KEY, region=SPEECH_REGION)
     speech_config.speech_synthesis_voice_name = VOICE
     speech_config.set_speech_synthesis_output_format(
-        speechsdk.SpeechSynthesisOutputFormat.Audio48Khz192KBitRateStereoMp3
+        speechsdk.SpeechSynthesisOutputFormat.Audio48Khz192KBitRateMonoMp3
     )
-
     audio_config = speechsdk.audio.AudioOutputConfig(filename=str(audio_path))
     synthesizer = speechsdk.SpeechSynthesizer(speech_config, audio_config)
 
@@ -21,3 +20,4 @@ def synthesize(text: str, filename: str = "output") -> str:
     elif result.reason == speechsdk.ResultReason.Canceled:
         cancellation = result.cancellation_details
         raise RuntimeError(f"TTS failed: {cancellation.reason} - {cancellation.error_details}")
+
